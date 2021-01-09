@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import pickle
 
 st.sidebar.image('https://images.vexels.com/media/users/3/203315/isolated/preview/7d99e56b1a5aae22e54d91bc1db965f6-orange-diamond-flat-by-vexels.png', width=300)
 st.sidebar.title ('Diamond Price Prediction')
@@ -18,17 +19,17 @@ user_input_caret = st.text_input("supports ints only", 0.23, key='caret')
 st.subheader('Input cut')
 option_cut = st.selectbox(
     'Whats the diamond cut?',
-     ('Email', 'Home phone', 'Mobile phone'), key='cut')
+     ('Fair', 'Good', 'Ideal', 'Premium', 'Very Good'), key='cut')
 
 st.subheader('Input color')
 option_color = st.selectbox(
     'Whats the diamond cut?',
-     ('Email', 'Home phone', 'Mobile phone'), key='color')
+     ('D', 'E', 'F', 'G', 'H', 'I', 'J'), key='color')
 
 st.subheader('Input clarity')
 option_clarity = st.selectbox(
     'Whats the diamond cut?',
-     ('Email', 'Home phone', 'Mobile phone'), key='clarity')
+     ('I1', 'IF', 'SI1', 'SI2', 'VS1', 'VS2', 'VVS1', 'VVS2'), key='clarity')
 
 st.subheader('Input x')
 user_input_x = st.text_input("supports ints only", 3.9, key ='x')
@@ -55,4 +56,4 @@ result = model.predict(df)[0]
 
 
 # Output
-st.title('Thanks for using our model to predict price of diamond. The prediction is: '+result)
+st.title('Thanks for using our model to predict price of diamond. The prediction is: '+str(result))
